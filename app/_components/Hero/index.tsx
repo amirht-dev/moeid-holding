@@ -6,7 +6,7 @@ const ContentContainer = () => (
   <div className="relative flex flex-1 flex-col">
     <div className="relative flex flex-1 items-center gap-10 rounded-[0px_30px_30px_0] bg-secondary ps-14">
       <span className="absolute left-0 top-full overflow-hidden aspect-square w-[30px] bg-inherit after:bg-base-100 after:absolute after:w-[200%] after:aspect-square after:translate-x-1/2 after:rounded-full" />
-      <Dots rows={6} />
+      <Dots rows={6} className='bg-base-100/50' />
       <div className='space-y-2'>
         <h1 className="text-5xl font-bold text-secondary-content">
           هلدینگ <span className="text-primary">معید.</span>
