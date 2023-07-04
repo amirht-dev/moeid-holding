@@ -1,4 +1,4 @@
-import daisyui from 'daisyui';
+const daisyui = require('daisyui')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -11,6 +11,10 @@ module.exports = {
     extend: {
       container: {
         center: true,
+        padding: {
+          DEFAULT: '20px',
+          md: '0px'
+        }
       },
     },
   },
