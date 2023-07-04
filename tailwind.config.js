@@ -1,3 +1,5 @@
+import daisyui from 'daisyui';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,12 +9,35 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      container: {
+        center: true,
       },
     },
   },
-  plugins: [],
-}
+  plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          primary: '#D1AF89',
+
+          secondary: '#1E2D48',
+
+          // accent: '#46ce73',
+
+          // neutral: '#1e1e2f',
+
+          'base-100': '#FFFFFF',
+
+          info: '#9abcea',
+
+          success: '#2fcaab',
+
+          warning: '#f7b36e',
+
+          error: '#db2458',
+        },
+      },
+    ],
+  },
+};
