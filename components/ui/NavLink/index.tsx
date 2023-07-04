@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 type LinkProps = {
   className?: string;
+  disActiveClassName?: string;
   activeClassName?: string;
   children?: React.ReactNode;
 } & NextLinkProps;
@@ -14,6 +15,7 @@ type LinkProps = {
 const NavLink = ({
   className,
   activeClassName,
+  disActiveClassName,
   children,
   href,
   ...props
@@ -25,7 +27,7 @@ const NavLink = ({
   const isActive = path.startsWith(linkHref) && splitPath[1] === splitHref[1];
   return (
     <NextLink
-      className={clsx(className, isActive && activeClassName)}
+      className={clsx(className, isActive ? activeClassName : disActiveClassName)}
       href={href}
       {...props}
     >
