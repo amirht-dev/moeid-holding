@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="fa" dir='rtl'>
       <body className={yekanFont.className}>
         <Navbar />
-        <main className="space-y-40">
+        <main className="space-y-16 md:space-y-40">
           {children}
         </main>
       </body>

@@ -10,7 +10,7 @@ import clsx from 'clsx';
 
 const Heading = ({ mobile = false }: { mobile?: boolean }) => (
   <div
-    className={clsx('flex gap-3', mobile ? 'flex md:hidden' : 'hidden md:flex')}
+    className={clsx('flex gap-5', mobile ? 'flex md:hidden' : 'hidden md:flex')}
   >
     <Dots rows={4} className="bg-black" />
     <h3
@@ -101,7 +101,7 @@ function Collections() {
           </Swiper>
         </div>
       </div>
-      <div className="mx-auto mt-4 flex md:hidden max-w-fit gap-2">
+      <div className="mx-auto mt-4 md:mt-10 flex max-w-fit gap-2">
         {Array.from({ length: swiper?.slides.length ?? 0 }).map((_, idx) => {
           const isActive = activeIdx === idx;
           return (
