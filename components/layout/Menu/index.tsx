@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import Image from 'next/image';
 import { links } from '@/data/constants';
@@ -40,7 +39,7 @@ const linkVariants: Variants = {
 }
 
 function Menu({ open, onClose }: MenuProps) {
-  return createPortal(
+  return (
     <AnimatePresence>
       {open ? (
         <motion.div
@@ -80,9 +79,7 @@ function Menu({ open, onClose }: MenuProps) {
           </button>
         </motion.div>
       ) : null}
-    </AnimatePresence>,
-    document.body
-  );
+    </AnimatePresence>);
 }
 
 export default Menu;
