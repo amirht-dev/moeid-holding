@@ -6,4 +6,13 @@
   .container {
     max-width: 1248px;
   }
+  .gradient {
+    @apply aspect-square absolute inset-0;
+    &-white {
+      @apply bg-base-100;
+    }
+  }
+  .section-path {
+    clip-path: polygon(100% 30%, 100% 70%, 0 100%, 0 0);
+  }
 }

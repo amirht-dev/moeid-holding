@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import clsx from 'clsx';
+import ArrowButton from '@/components/ui/Buttons/ArrowButton';
 
 const Heading = ({ mobile = false }: { mobile?: boolean }) => (
   <div
@@ -26,34 +27,33 @@ const Heading = ({ mobile = false }: { mobile?: boolean }) => (
 function Collections() {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [bullets, setBullets] = useState(0)
+
+  const handleBullets = (swiper: SwiperType) => {
+    let count: number
+              const slides = swiper.slides.length
+              switch (swiper.currentBreakpoint) {
+                case '1000':
+                  count = slides - 3
+                  break;
+                case '768':
+                  count = slides - 2
+                  break;                
+                default:
+                  count = slides - 1
+                  break;
+              }
+              setBullets(count)
+  }
+  
   return (
     <section className="container">
       {/* mobile */}
       <div className="mb-8 md:hidden flex items-center justify-between">
         <Heading mobile />
         <div className="flex gap-2">
-          <button
-            className="grid place-items-center rounded-xl bg-secondary p-1"
-            onClick={() => swiper?.slidePrev()}
-          >
-            <Image
-              src="/images/icons/arrow/Arrow-Right.png"
-              alt="slider previous button"
-              width={25}
-              height={25}
-            />
-          </button>
-          <button
-            className="grid place-items-center rounded-xl bg-secondary p-1"
-            onClick={() => swiper?.slideNext()}
-          >
-            <Image
-              src="/images/icons/arrow/Arrow-Left.png"
-              alt="slider next button"
-              width={25}
-              height={25}
-            />
-          </button>
+          <ArrowButton variant='Right' onClick={() => swiper?.slidePrev()}/>
+          <ArrowButton variant='Left' onClick={() => swiper?.slideNext()}/>
         </div>
       </div>
       <div className="relative inset-x-2 rounded-3xl bg-primary bg-[url(/images/line.png)] bg-right bg-no-repeat p-4 md:p-10 ">
@@ -65,13 +65,19 @@ function Collections() {
             استفاده از طراحان گرافیک است.
           </p>
         </div>
-        <div className="">
+        <div>
           <Swiper
             slidesPerView={1.8}
             spaceBetween={30}
             onSwiper={setSwiper}
             onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
-            className="md:-mb-16 md:mt-20"
+            className="md:-mb-16 md:mt-20 pb-2"
+            onAfterInit={(swiper) => {
+              handleBullets(swiper)
+            }}
+            onBreakpoint={(swiper) => {
+              handleBullets(swiper)
+            }}
             breakpoints={{
               768: {slidesPerView: 3},
               1000: {slidesPerView: 4},
@@ -80,7 +86,7 @@ function Collections() {
             {Array.from({ length: 8 }).map((_, idx) => (
               <SwiperSlide
                 key={idx}
-                className="rounded-[20px] bg-base-100 p-4 md:rounded-[30px] md:p-8"
+                className="rounded-[20px] bg-base-100 p-4 md:rounded-[30px] shadow-md md:p-8"
               >
                 <Image
                   src="/images/slider.png"
@@ -102,7 +108,7 @@ function Collections() {
         </div>
       </div>
       <div className="mx-auto mt-4 md:mt-10 flex max-w-fit gap-2">
-        {Array.from({ length: swiper?.slides.length ?? 0 }).map((_, idx) => {
+        {Array.from({ length: bullets }).map((_, idx) => {
           const isActive = activeIdx === idx;
           return (
             <span
