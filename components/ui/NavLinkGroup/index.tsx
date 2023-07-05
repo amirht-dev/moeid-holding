@@ -17,7 +17,6 @@ function NavLinkGroup({
   activeLinkClassName,
   disActiveLinkClassName,
   linkClassName,
-  direction = 'horizontal'
 }: NavLinkGroupProps) {
   return (
     <ul className="flex items-center gap-4">
