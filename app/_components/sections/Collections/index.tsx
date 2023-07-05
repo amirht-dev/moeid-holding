@@ -71,7 +71,7 @@ function Collections() {
             spaceBetween={30}
             onSwiper={setSwiper}
             onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
-            className="md:-mb-16 md:mt-20 pb-2"
+            className="md:-mb-16 md:mt-20 !py-1"
             onAfterInit={(swiper) => {
               handleBullets(swiper)
             }}
