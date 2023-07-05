@@ -86,7 +86,7 @@ function Collections() {
             {Array.from({ length: 8 }).map((_, idx) => (
               <SwiperSlide
                 key={idx}
-                className="rounded-[20px] bg-base-100 p-4 md:rounded-[30px] shadow-lg shadow-gray-100 md:p-8"
+                className="rounded-[20px] bg-base-100 p-4 md:rounded-[30px] md:shadow-lg shadow-gray-100 md:p-8"
               >
                 <Image
                   src="/images/slider.png"
